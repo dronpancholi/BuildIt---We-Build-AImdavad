@@ -1,0 +1,109 @@
+:root {
+    --text-charcoal: #0F172A;
+    --text-gray: #64748B;
+    --bg-color: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+    color: var(--text-charcoal);
+    /* Improve font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-container {
+    /* Set a tall scroll height to map progression smoothly */
+    height: 400vh;
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-color);
+}
+
+.hero-sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh; /* Keeps the frame locked to the viewport */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    /* Keep aspect ratio without cropping */
+    object-fit: contain;
+    /* Hardware acceleration for rendering */
+    transform: translateZ(0); 
+    will-change: transform;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Translate -50% -50% centers it perfectly. JS will override this dynamically */
+    transform: translate(-50%, calc(-50% + 12px));
+    text-align: center;
+    z-index: 10;
+    pointer-events: none; /* Let clicks pass through */
+    
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+.hero-text h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 600;
+    color: var(--text-charcoal);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.2em;
+    line-height: 1;
+}
+
+.hero-text p {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-weight: 400;
+    color: var(--text-gray);
+    letter-spacing: -0.01em;
+}
+
+.next-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+}
+
+.next-section .content {
+    text-align: center;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.next-section h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--text-charcoal);
+    letter-spacing: -0.02em;
+}
+
+.next-section p {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
